@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guide de préparation à l'entretien d'entrée en formation Concepteur Développeur d'Applications (CDA)">
+  <meta name="theme-color" content="#6366f1">
+  <title>Préparation entretien CDA</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/prep-cda.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <div id="app" class="app">
+    <aside id="sidebar" class="sidebar" aria-label="Navigation principale">
+      <div class="sidebar-header">
+        <a href="#/prep" class="logo" aria-label="Préparation entretien CDA">
+          <span class="logo-icon" aria-hidden="true">🎯</span>
+          <div class="logo-text">
+            <strong>Préparation CDA</strong>
+            <span>Entretien d'admission</span>
+          </div>
+        </a>
+        <button id="sidebar-close" class="icon-btn sidebar-close" aria-label="Fermer le menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="sidebar-search">
+        <label for="global-search" class="visually-hidden">Rechercher dans la checklist</label>
+        <input type="search" id="global-search" placeholder="Rechercher (Git, HTTP, CV…)" autocomplete="off" aria-controls="search-results">
+        <div id="search-results" class="search-results" hidden></div>
+      </div>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Sections"></nav>
+
+      <div class="sidebar-footer">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème">
+          <span class="theme-icon-light">☀️</span>
+          <span class="theme-icon-dark">🌙</span>
+        </button>
+        <div class="sidebar-progress">
+          <span id="global-progress-label">Préparation</span>
+          <div class="progress-bar"><div id="global-progress-bar" class="progress-fill" style="width:0%"></div></div>
+          <span id="global-progress-percent">0%</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button id="sidebar-toggle" class="icon-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div id="breadcrumb" class="breadcrumb" aria-label="Fil d'Ariane"></div>
+      </header>
+
+      <main id="main-content" class="main-content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>
