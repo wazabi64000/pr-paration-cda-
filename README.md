@@ -13,8 +13,8 @@ Aucun serveur requis. Pas de `npm install`.
 ## ✨ Contenu
 
 - **Tableau de bord** — progression, compétences validées, prérequis, temps restant
-- **Checklist** — 96 prérequis en 11 catégories (culture info, web, HTML/CSS, JS, BDD, Git, API, outils, logique, entretien, savoir-être)
-- **Questions fréquentes** — 15 questions à préparer (sans réponses affichées)
+- **Checklist** — prérequis en 19 catégories (culture info, web, HTML/CSS, JS, BDD, Git, API, outils, logique, Docker, CI/CD, déploiement, sécurité, tests unitaires, Playwright, infrastructure, architecture multicouche, entretien, savoir-être)
+- **Questions fréquentes** — questions à préparer (sans réponses affichées)
 - **Suivi visuel** — progression globale, technique, entretien, outils, savoir-être
 - **Recherche** — filtrer la checklist par mot-clé
 - **Dark mode** — thème clair/sombre

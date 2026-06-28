@@ -18,8 +18,16 @@ export const PREP_CATEGORIES = [
   { id: 'api', num: 7, title: 'API', icon: '🔌', group: 'technique' },
   { id: 'outils', num: 8, title: 'Outils', icon: '🛠️', group: 'outils' },
   { id: 'logic', num: 9, title: 'Logique', icon: '🧠', group: 'technique' },
-  { id: 'entretien', num: 10, title: 'Entretien', icon: '🎤', group: 'entretien' },
-  { id: 'soft-skills', num: 11, title: 'Savoir-être', icon: '🤝', group: 'soft' },
+  { id: 'docker', num: 10, title: 'Docker', icon: '🐳', group: 'technique' },
+  { id: 'cicd', num: 11, title: 'CI / CD', icon: '🔄', group: 'technique' },
+  { id: 'deploy', num: 12, title: 'Déploiement', icon: '🚀', group: 'technique' },
+  { id: 'security', num: 13, title: 'Sécurité', icon: '🔒', group: 'technique' },
+  { id: 'unit-tests', num: 14, title: 'Tests unitaires', icon: '🧪', group: 'technique' },
+  { id: 'playwright', num: 15, title: 'Tests Playwright', icon: '🎭', group: 'technique' },
+  { id: 'infra', num: 16, title: 'Infrastructure', icon: '🏗️', group: 'technique' },
+  { id: 'architecture', num: 17, title: 'Architecture multicouche', icon: '📐', group: 'technique' },
+  { id: 'entretien', num: 18, title: 'Entretien', icon: '🎤', group: 'entretien' },
+  { id: 'soft-skills', num: 19, title: 'Savoir-être', icon: '🤝', group: 'soft' },
 ];
 
 function item(id, category, title, minutes = 10) {
@@ -124,7 +132,82 @@ export const PREP_ITEMS = [
   item('log-debug', 'logic', 'Je sais rechercher une erreur', 15),
   item('log-docs', 'logic', 'Je sais utiliser la documentation'),
 
-  // 10 — Entretien
+  // 10 — Docker
+  item('dock-concept', 'docker', 'Je sais ce qu\'est Docker'),
+  item('dock-container', 'docker', 'Je comprends conteneur vs machine virtuelle', 15),
+  item('dock-image', 'docker', 'Je connais le concept d\'image Docker'),
+  item('dock-dockerfile', 'docker', 'Je connais un Dockerfile', 15),
+  item('dock-build', 'docker', 'docker build'),
+  item('dock-run', 'docker', 'docker run'),
+  item('dock-compose', 'docker', 'docker compose', 15),
+  item('dock-volumes', 'docker', 'Je comprends les volumes Docker', 15),
+  item('dock-ports', 'docker', 'Je comprends l\'exposition de ports', 10),
+
+  // 11 — CI / CD
+  item('cicd-concept', 'cicd', 'Je sais ce qu\'est CI/CD'),
+  item('cicd-ci', 'cicd', 'Je comprends l\'intégration continue (CI)', 15),
+  item('cicd-cd', 'cicd', 'Je comprends le déploiement continu (CD)', 15),
+  item('cicd-actions', 'cicd', 'Je connais GitHub Actions (ou GitLab CI / Jenkins)', 15),
+  item('cicd-pipeline', 'cicd', 'Je comprends un pipeline build → test → deploy', 15),
+  item('cicd-env', 'cicd', 'Je comprends les environnements dev / staging / prod', 15),
+  item('cicd-trigger', 'cicd', 'Je comprends le déclenchement automatique (push, PR)', 10),
+
+  // 12 — Déploiement
+  item('dep-concept', 'deploy', 'Je sais ce qu\'est un déploiement'),
+  item('dep-prod', 'deploy', 'Je comprends un environnement de production', 15),
+  item('dep-cloud', 'deploy', 'Je connais l\'hébergement cloud (VPS, PaaS, SaaS)', 15),
+  item('dep-ssl', 'deploy', 'Je comprends domaine et certificat SSL / HTTPS', 10),
+  item('dep-done', 'deploy', 'J\'ai déjà déployé un projet (Vercel, Railway, Render…)', 30),
+  item('dep-env', 'deploy', 'Je comprends les variables d\'environnement en production', 15),
+  item('dep-build', 'deploy', 'Je comprends build vs runtime en production', 15),
+
+  // 13 — Sécurité
+  item('sec-basics', 'security', 'Je connais les bases de la sécurité web', 15),
+  item('sec-https', 'security', 'Je comprends HTTPS et le chiffrement'),
+  item('sec-xss', 'security', 'Je connais XSS et CSRF (notions)', 15),
+  item('sec-hash', 'security', 'Je comprends le hachage de mots de passe (bcrypt, argon2)', 15),
+  item('sec-jwt', 'security', 'Je comprends JWT et l\'authentification', 15),
+  item('sec-owasp', 'security', 'Je connais OWASP Top 10 (notions)', 15),
+  item('sec-secrets', 'security', 'Je sais ne jamais commiter de secrets (.env, clés API)'),
+
+  // 14 — Tests unitaires
+  item('tu-concept', 'unit-tests', 'Je sais ce qu\'est un test unitaire'),
+  item('tu-framework', 'unit-tests', 'Je connais Jest, Vitest ou PHPUnit (notions)', 15),
+  item('tu-aaa', 'unit-tests', 'Je comprends Arrange — Act — Assert', 10),
+  item('tu-mock', 'unit-tests', 'Je connais mock et stub (notions)', 15),
+  item('tu-coverage', 'unit-tests', 'Je comprends la couverture de code (notions)', 10),
+  item('tu-written', 'unit-tests', 'J\'ai écrit au moins un test unitaire', 20),
+  item('tu-isolation', 'unit-tests', 'Je comprends l\'isolation des tests unitaires', 10),
+
+  // 15 — Tests Playwright
+  item('pw-concept', 'playwright', 'Je sais ce qu\'est un test E2E (bout en bout)'),
+  item('pw-playwright', 'playwright', 'Je connais Playwright (ou Cypress / Selenium)', 15),
+  item('pw-vs-unit', 'playwright', 'Je distingue test unitaire, intégration et E2E', 15),
+  item('pw-scenario', 'playwright', 'Je comprends un scénario utilisateur automatisé', 15),
+  item('pw-selectors', 'playwright', 'Je connais les sélecteurs et interactions (click, fill)', 15),
+  item('pw-pom', 'playwright', 'Je connais le Page Object Model (notions)', 15),
+  item('pw-ci', 'playwright', 'Je comprends l\'exécution des tests E2E en CI', 15),
+
+  // 16 — Infrastructure
+  item('infra-concept', 'infra', 'Je sais ce qu\'est une infrastructure informatique'),
+  item('infra-server', 'infra', 'Je comprends serveur, client et réseau', 10),
+  item('infra-lb', 'infra', 'Je connais le load balancer (notions)', 15),
+  item('infra-cdn', 'infra', 'Je connais le CDN (notions)', 10),
+  item('infra-cloud', 'infra', 'Je connais le cloud (AWS, Azure, GCP — notions)', 15),
+  item('infra-monitor', 'infra', 'Je comprends monitoring et logs (notions)', 15),
+  item('infra-dns', 'infra', 'Je comprends DNS et résolution de noms', 10),
+
+  // 17 — Architecture multicouche
+  item('arch-layers', 'architecture', 'Je connais l\'architecture multicouche (n-tiers)'),
+  item('arch-pmd', 'architecture', 'Je comprends Présentation / Métier / Données', 15),
+  item('arch-diagram', 'architecture', 'Je sais dessiner un diagramme d\'architecture', 20),
+  item('arch-mvc', 'architecture', 'Je comprends MVC ou MVVM (notions)', 15),
+  item('arch-flux', 'architecture', 'Je peux expliquer le flux Frontend → API → BDD', 15),
+  item('arch-soc', 'architecture', 'Je connais la séparation des responsabilités (SoC)', 10),
+  item('arch-seq', 'architecture', 'Je connais diagramme de composants / séquence (notions)', 15),
+  item('arch-draw', 'architecture', 'J\'ai réalisé un diagramme multicouche de mon projet', 25),
+
+  // 18 — Entretien
   item('ent-cv', 'entretien', 'Mon CV est à jour', 30),
   item('ent-parcours', 'entretien', 'Je connais mon parcours', 20),
   item('ent-projet', 'entretien', 'Je peux présenter mon projet préféré', 30),
@@ -134,7 +217,7 @@ export const PREP_ITEMS = [
   item('ent-pitch', 'entretien', 'Je sais me présenter en moins de deux minutes', 30),
   item('ent-questions', 'entretien', 'J\'ai préparé des questions à poser', 15),
 
-  // 11 — Savoir-être
+  // 19 — Savoir-être
   item('soft-ponct', 'soft-skills', 'Ponctualité'),
   item('soft-curio', 'soft-skills', 'Curiosité'),
   item('soft-motiv', 'soft-skills', 'Motivation'),
@@ -163,6 +246,17 @@ export const PREP_FAQ = [
   'Quel est votre projet personnel préféré ?',
   'Comment gérez-vous une difficulté technique ?',
   'Comment apprenez-vous une nouvelle technologie ?',
+  'Qu\'est-ce que Docker ?',
+  'Qu\'est-ce que CI/CD ?',
+  'Comment déployez-vous une application web ?',
+  'Qu\'est-ce qu\'un test unitaire ?',
+  'Quelle différence entre test unitaire et test E2E ?',
+  'Qu\'est-ce que Playwright ?',
+  'Quelles bonnes pratiques de sécurité connaissez-vous ?',
+  'Qu\'est-ce qu\'une architecture multicouche ?',
+  'Pouvez-vous expliquer le flux de votre application (Frontend → API → BDD) ?',
+  'Qu\'est-ce qu\'un pipeline CI/CD ?',
+  'Comment gérez-vous les secrets en production ?',
 ];
 
 export function isItemDone(state, id) {
