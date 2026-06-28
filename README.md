@@ -1,5 +1,5 @@
 # 🎯 Préparation entretien CDA
-
+https://wazabi64000.github.io/pr-paration-cda-/
 Guide de préparation à l'**entretien d'entrée en formation Concepteur Développeur d'Applications (CDA)** ou en alternance.
 
 Ce n'est **pas une formation**, **pas un cours**, **pas un quiz**. C'est une **feuille de route** pour vérifier que vous possédez les prérequis attendus avant votre entretien.
