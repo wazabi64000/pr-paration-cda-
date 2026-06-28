@@ -38,8 +38,15 @@ node build-main.js
 
 ## 💾 Données sauvegardées
 
-Tout est mémorisé dans le navigateur (LocalStorage) :
+Tout est mémorisé **automatiquement** dans le **localStorage** du navigateur (pas de cookies) :
 - Cases cochées de la checklist
 - Date de dernière progression
-- Filtre actif
-- Thème clair/sombre
+- Filtre actif et thème clair/sombre
+
+La progression est **conservée après actualisation (F5) et fermeture du navigateur**.
+
+Test de persistance :
+
+```bash
+node scripts/test-persistence.js
+```

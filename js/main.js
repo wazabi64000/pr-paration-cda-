@@ -21,14 +21,26 @@ function getState() {
   return state;
 }
 
+function getDefaultState() {
+  return structuredClone(defaultState);
+}
+
+function resetStateForTests() {
+  state = structuredClone(defaultState);
+  clearTimeout(saveTimeout);
+  saveTimeout = null;
+}
+
 function loadState() {
   try {
     const saved = localStorage.getItem(LS_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
       state = { ...structuredClone(defaultState), ...parsed };
+      if (!state.prepChecklist || typeof state.prepChecklist !== 'object') {
+        state.prepChecklist = {};
+      }
     }
-    // Migration depuis l'ancien format
     const legacy = localStorage.getItem('cda-roadmap-state');
     if (legacy && !saved) {
       try {
@@ -36,8 +48,8 @@ function loadState() {
         if (old.checklists) {
           const prepChecklist = {};
           for (const [k, v] of Object.entries(old.checklists)) {
-            if (k.startsWith('prep-') || k.startsWith('ent-') || k.startsWith('ci-')) {
-              prepChecklist[k] = v === 'done';
+            if (k.startsWith('prep-') || k.startsWith('ent-') || k.startsWith('ci-') || k.startsWith('dock-')) {
+              prepChecklist[k] = v === 'done' || v === true;
             }
           }
           if (Object.keys(prepChecklist).length) state.prepChecklist = prepChecklist;
@@ -51,20 +63,27 @@ function loadState() {
   return state;
 }
 
+/** Écrit immédiatement dans localStorage (persiste après F5 et fermeture du navigateur). */
+function flushSave() {
+  clearTimeout(saveTimeout);
+  saveTimeout = null;
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
+    return true;
+  } catch (e) {
+    console.warn('Failed to save state:', e);
+    return false;
+  }
+}
+
 function saveState() {
   clearTimeout(saveTimeout);
-  saveTimeout = setTimeout(() => {
-    try {
-      localStorage.setItem(LS_KEY, JSON.stringify(state));
-    } catch (e) {
-      console.warn('Failed to save state:', e);
-    }
-  }, 200);
+  saveTimeout = setTimeout(flushSave, 100);
 }
 
 function updateState(updates) {
   Object.assign(state, updates);
-  saveState();
+  flushSave();
 }
 
 function exportState() {
@@ -75,9 +94,17 @@ function importState(json) {
   try {
     const parsed = JSON.parse(json);
     state = { ...structuredClone(defaultState), ...parsed };
-    saveState();
+    flushSave();
     return true;
   } catch { return false; }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', flushSave);
+  window.addEventListener('pagehide', flushSave);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flushSave();
+  });
 }
 
 
@@ -553,7 +580,7 @@ function renderPrepPage() {
             <div class="prep-stat-label">Temps estimé restant</div>
           </div>
         </div>
-        <p class="prep-hint">${stats.validatedCount} / ${stats.totalItems} éléments cochés — sauvegarde automatique</p>
+        <p class="prep-hint">${stats.validatedCount} / ${stats.totalItems} éléments cochés — <strong>sauvegarde automatique</strong> dans le navigateur (localStorage), conservée après actualisation ou fermeture</p>
       </section>
 
       <section class="prep-progress-section" id="prep-suivi">

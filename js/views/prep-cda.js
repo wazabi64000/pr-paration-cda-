@@ -43,7 +43,7 @@ export function renderPrepPage() {
             <div class="prep-stat-label">Temps estimé restant</div>
           </div>
         </div>
-        <p class="prep-hint">${stats.validatedCount} / ${stats.totalItems} éléments cochés — sauvegarde automatique</p>
+        <p class="prep-hint">${stats.validatedCount} / ${stats.totalItems} éléments cochés — <strong>sauvegarde automatique</strong> dans le navigateur (localStorage), conservée après actualisation ou fermeture</p>
       </section>
 
       <section class="prep-progress-section" id="prep-suivi">
